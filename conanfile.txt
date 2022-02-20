@@ -1,0 +1,8 @@
+[requires]
+gtest/cci.20210126
+nng/1.5.2
+protobuf/3.19.2
+cmake/3.22.0
+
+[generators]
+cmake
