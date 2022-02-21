@@ -6,3 +6,5 @@ cmake/3.22.0
 
 [generators]
 cmake
+compiler_args
+virtualrunenv
