@@ -2,15 +2,17 @@
 
 #include <nngrpc.pb.h>
 
+#include <Channel.hpp>
+
 namespace nngrpc 
 {
 
 class Client {
 public:
-    Client(const Channel &);
+    Client(ClientChannel &);
     Reply call(const Request &);
 private:
-    const Channel &m_channel;
+    Channel &m_channel;
 };
 
 }

@@ -8,16 +8,16 @@ all: conan proto tests
 
 conan: conaninfo.txt
 
-proto: nngrpc.pb.cc
+proto: proto/nngrpc.pb.cc
 
-tests: nngrpc.pb.cc $(SRCS)
-	g++ --std=c++17 -I./ @conanbuildinfo.args proto/$< $(SRCS) -o tests
+tests: proto/nngrpc.pb.cc $(SRCS)
+	g++ --std=c++17 -I./test -I./proto -I./ @conanbuildinfo.args $< $(SRCS) -o tests
 
 conaninfo.txt: conanfile.txt
 	conan install .
 
-nngrpc.pb.cc: nngrpc.proto conaninfo.txt
-	protoc proto/nngrpc.proto --cpp_out=./
+proto/nngrpc.pb.cc: proto/nngrpc.proto conaninfo.txt
+	protoc $< --cpp_out=./
 
 run: tests
 	./tests

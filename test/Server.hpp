@@ -1,7 +1,10 @@
 #pragma once
 
 #include <nngrpc.pb.h>
-
+#include <Channel.hpp>
+#include <string>
+#include <Service.hpp>
+#include <unordered_map>
 #include <functional>
 
 namespace nngrpc 
@@ -9,10 +12,12 @@ namespace nngrpc
 
 class Server {
 public:
-    Server(const Channel &);
-    void Register(const Service &);
+    Server(ServerChannel &);
+    void Register(Service &);
+    void start();
 private:
-    const Channel &m_channel;
+    Channel &m_channel;
+    std::unordered_map<std::string, std::reference_wrapper<Service>> m_services;
 };
 
 }

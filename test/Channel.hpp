@@ -1,11 +1,14 @@
 #pragma once
 
+#include <vector>
+#include <string>
+
 namespace nngrpc 
 {
 
 class Channel {
 public:
-    send(const std::vector<uint8_t> &);
+    void send(const std::vector<uint8_t> &);
     std::vector<uint8_t> recv();
 };
 
